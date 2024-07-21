@@ -10,6 +10,6 @@ start the backend with >"node server.js"
 ->FRONTEND
 go to the frontend folder in a new terminal 
 run > "npm i" to install all the packages
-start the frontend with > "npm run dev"
+start the frontend with > "npm run dev";
 
 
