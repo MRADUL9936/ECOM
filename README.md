@@ -1,3 +1,4 @@
+^|  go to the code from preview to -> code 
 -> BACKEND
 first clone the repository
 then go the backend folder
