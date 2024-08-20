@@ -25,7 +25,7 @@ const loginUser=async(req,res)=>{
           res.status(200).json("Success")
 
     }catch(err){
-        console.log("error loggin user")
+        console.log("error in login user")
         res.status(500).json({error:"Internal Server Error"})
     }
 
@@ -48,13 +48,14 @@ const signUpUser=async (req,res)=>{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     try{
-        const {email,password,confirmPassword}=req.body;
+        const {name,email,password,confirmPassword}=req.body;
 
         if(!emailRegex.test(email)){
             return res.status(400).json("Invalid Email format")
         }
 
         if(password!==confirmPassword){
+            
             return res.status(400).json("Password doesn't match")
         }
 
@@ -68,6 +69,7 @@ const signUpUser=async (req,res)=>{
         const hashPassword=await bcrypt.hash(password,salt)
         
         const newuser=new User({
+            name,
             email,
             password:hashPassword
         })

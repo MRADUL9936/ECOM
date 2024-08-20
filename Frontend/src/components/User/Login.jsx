@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import { useDispatch,useSelector } from "react-redux";
+import {login, logout} from "../../store/authSlice"
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false); // State for showing/hiding password
     const navigate = useNavigate();
-    
+    const dispatch=useDispatch()
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({ email, password }); // Log data before sending
 
-        axios.post("http://localhost:3000/user/login", { email, password }, {
+        axios.post("https://cipherschools-etest-backend.onrender.com/user/login", { email, password }, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -20,7 +22,9 @@ function Login() {
         .then(response => {
             console.log(response.data); // Log the response data
             if (response.status === 200 && response.data === "Success") {
-                navigate("/home");
+                dispatch(login({ userData: email  }));           //dispath the function to store the email in slice
+                navigate("/tests");
+                alert("login Successfull")
             } else {
                 alert("Login failed, please try again");
             }

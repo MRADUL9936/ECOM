@@ -36,9 +36,9 @@ function Header() {
     };
 
     return (
-        <header className="bg-gray-800 text-white py-4 px-4">
+        <header className="fixed top-0 w-full z-50 bg-gray-800 text-white py-4 px-4">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-2xl font-bold">ECOM</h1>
+                <h1 className="text-2xl font-bold">ETest</h1>
                 <nav className="space-x-4">
                     <Link 
                         to="/login"

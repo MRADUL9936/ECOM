@@ -1,9 +1,9 @@
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 import jwt from 'jsonwebtoken';
 
 const protectRoute=async(req,res,next)=>{
     try{
-        const token=req.cookies.Ecom
+        const token=req.cookies.ETest
         if(!token){
             return res.status(401).json({error:"Unauthorized - No Token Provided"})
            }
@@ -27,3 +27,5 @@ const protectRoute=async(req,res,next)=>{
     }
 
 }
+
+export default protectRoute
